@@ -26,7 +26,13 @@ router.route("/list").get((req, res) => {
 });
 
 router.route("/list").post((req,res)=>{
-})
+  var email = req.body.email;
+  var pass = req.body.pass;
+  var sql = "INSERT INTO user (email , pass) VALUES (?,?)";
+  connect.query(sql,[email,pass],function(err,results){
+    res.send(results);
+  });
+});
 router.route("/exchange").get((req, res) => {
   res.json("you are in the exhange view");
 });
