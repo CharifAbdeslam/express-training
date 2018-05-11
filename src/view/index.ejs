@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Storystrap Template</title>
+		<title>Login test</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,26 +41,39 @@
 
   </div>
 </nav>
+<div class="row">
 <div class="col-6">
-SIGN UP
-<form action="/list" method="post">
+<form action="auth/login" method="post">
 	<div class="form-group">
 		<label for="exampleInputEmail1">Username</label>
-		<input type="email" class="form-control" name="email" placeholder="Enter email">
+		<input type="text" class="form-control" name="username" placeholder="Enter email">
 		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	</div>
 	<div class="form-group">
 		<label for="exampleInputPassword1">Password</label>
-		<input type="password" class="form-control" name="pass" placeholder="Password">
+		<input type="password" class="form-control" name="password" placeholder="Password">
 	</div>
-	<div class="form-group form-check">
-		<input type="checkbox" class="form-check-input" id="exampleCheck1">
-		<label class="form-check-label" for="exampleCheck1">Check me out</label>
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<button type="submit" class="btn btn-primary">Login</button>
 </form>
 </div>
-
+<div class="col-6">
+<form action="auth/signup" method="post">
+	<div class="form-group">
+		<label for="exampleInputEmail1">Username</label>
+		<input type="text" class="form-control" name="username" placeholder="Enter username">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Email</label>
+		<input type="email" class="form-control" name="email" placeholder="Enter email">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword1">Password</label>
+		<input type="password" class="form-control" name="password" placeholder="Password">
+	</div>
+	<button type="submit" class="btn btn-primary">Create user</button>
+</form>
+</div>
+</div>
 	</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

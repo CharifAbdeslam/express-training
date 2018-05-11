@@ -1,40 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
+var db = require('./db');
 
-const connect = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'heaton1985',
-  database : 'users'
-});
-connect.connect((err)=>{
-  if(err){
-    console.log(err);
+  router.route("/").get(function(req, res){
+    res.render("index");
+  });
+
+  router.route("/list").get(authenticationMiddleware(),function(req, res){
+    var sql = "select * from user";
+      db.query(sql,function(err,results,field){
+        res.send(results);
+      });
+  });
+  router.route("/exchange").get(authenticationMiddleware(),function(req, res){
+    res.json("you are in the exhange view");
+  });
+
+  function authenticationMiddleware () {
+  	return (req, res, next) => {
+  	    if (req.isAuthenticated()) return next();
+  	    res.send('Please login to view this page')
+  	}
   }
-});
-
-router.route("/").get((req, res) => {
-  res.render("index");
-});
-
-router.route("/list").get((req, res) => {
-  var sql = "select * from user";
-  connect.query(sql,(err,results,field)=>{
-    res.send(results);
-  });
-});
-
-router.route("/list").post((req,res)=>{
-  var email = req.body.email;
-  var pass = req.body.pass;
-  var sql = "INSERT INTO user (email , pass) VALUES (?,?)";
-  connect.query(sql,[email,pass],function(err,results){
-    res.send(results);
-  });
-});
-router.route("/exchange").get((req, res) => {
-  res.json("you are in the exhange view");
-});
 
 module.exports = router;
