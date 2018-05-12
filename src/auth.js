@@ -4,7 +4,7 @@ const authRouter = express.Router();
 const LocalStrategy = require('passport-local').Strategy;
 const db = require('./db');
 
-const router = function(){
+
   authRouter.route("/signup")
             .post((req,res)=>{
              var username = req.body.username;
@@ -26,8 +26,8 @@ authRouter.route("/login")
               successRedirect:"/list",
               failureRedirect:"/"
             }));
-return authRouter;
-}
+
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
       const sql = "SELECT username , password FROM user where username=? AND password=?";
@@ -45,4 +45,4 @@ passport.deserializeUser(function(user_id, done) {
     done(null, user_id);
 });
 
-module.exports = router;
+module.exports = authRouter;

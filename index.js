@@ -5,10 +5,8 @@ const passport = require('passport');
 const session = require('express-session');
 const app = express();
 const port = process.env.PORT || 3000;
-
-
 const globalRouter = require('./src/router');
-const authRouter = require('./src/auth')()
+const authRouter = require('./src/auth');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

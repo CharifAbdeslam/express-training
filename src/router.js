@@ -15,7 +15,6 @@ var db = require('./db');
   router.route("/exchange").get(authenticationMiddleware(),function(req, res){
     res.json("you are in the exhange view");
   });
-
   function authenticationMiddleware () {
   	return (req, res, next) => {
   	    if (req.isAuthenticated()) return next();
